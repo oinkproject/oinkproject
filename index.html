@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GARTIST // Streetwear Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Syne & Space Grotesk for bold streetwear typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            green: '#00FF66',
+                            greenGlow: '#00FF88',
+                            blue: '#0052FF',
+                            darkBlue: '#060B1E',
+                            deepNavy: '#0A1128',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Syne', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    boxShadow: {
+                        'neon-green': '0 0 20px rgba(0, 255, 102, 0.5)',
+                        'neon-blue': '0 0 25px rgba(0, 82, 255, 0.6)',
+                        'sharp': '4px 4px 0px #00FF66',
+                        'sharp-blue': '4px 4px 0px #0052FF',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Custom Scrollbar & Streetwear Texture Effects */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060B1E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00FF66;
+            border-radius: 0px;
+        }
+
+        /* Glitch Animation Keyframes */
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+        .glitch-hover:hover {
+            animation: glitch 0.2s ease infinite;
+        }
+
+        /* Marquee text loop */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 12s linear infinite;
+        }
+
+        /* Background grid overlay */
+        .bg-grid-pattern {
+            background-size: 30px 30px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 82, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 82, 255, 0.1) 1px, transparent 1px);
+        }
+
+        /* Street Tape Accent */
+        .tape-accent {
+            background: #00FF66;
+            color: #060B1E;
+            transform: rotate(-2deg);
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="bg-[#060B1E] text-white font-mono antialiased min-h-screen flex justify-center items-center p-0 sm:p-4 bg-grid-pattern selection:bg-[#00FF66] selection:text-[#060B1E]">
+
+    <!-- Mobile Frame Container (Simulates high-end mobile experience on desktop while responsive on mobile) -->
+    <div class="w-full max-w-md bg-[#0A1128] min-h-screen sm:min-h-[880px] sm:max-h-[92vh] sm:rounded-3xl border-0 sm:border-2 border-[#0052FF]/40 shadow-2xl overflow-y-auto relative flex flex-col justify-between">
+
+        <!-- Top Status Bar / Header -->
+        <header class="sticky top-0 z-50 bg-[#0A1128]/90 backdrop-blur-md border-b-2 border-[#00FF66]/30 px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-[#00FF66] animate-pulse shadow-[0_0_8px_#00FF66]"></span>
+                <span class="font-display font-extrabold text-lg tracking-wider text-white flex items-center gap-1">
+                    RAW<span class="text-[#00FF66]">LABS</span><span class="text-xs text-[#0052FF] font-mono">©2026</span>
+                </span>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <button id="audioToggleBtn" onclick="toggleSound()" class="p-1.5 border border-[#0052FF] hover:border-[#00FF66] text-gray-300 hover:text-[#00FF66] transition-colors rounded" title="Sound Effects">
+                    <i data-lucide="volume-x" class="w-4 h-4"></i>
+                </button>
+                <button onclick="openModal('contactModal')" class="bg-[#00FF66] text-[#060B1E] px-3 py-1 font-bold text-xs uppercase hover:bg-white hover:shadow-neon-green transition-all transform active:scale-95">
+                    HIRE ME
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 pb-10">
+
+            <!-- Streetwear Marquee Banner -->
+            <div class="bg-[#0052FF] text-[#00FF66] font-display font-bold text-xs py-1.5 overflow-hidden border-b border-[#00FF66]/40 uppercase tracking-widest">
+                <div class="animate-marquee whitespace-nowrap flex gap-4">
+                    <span>★ GRAPHIC ARTIST</span>
+                    <span>/// STREETWEAR APPAREL DESIGN</span>
+                    <span>★ POSTER ART & TYPOGRAPHY</span>
+                    <span>/// BRAND IDENTITY</span>
+                    <span>★ GRAPHIC ARTIST</span>
+                    <span>/// STREETWEAR APPAREL DESIGN</span>
+                    <span>★ POSTER ART & TYPOGRAPHY</span>
+                    <span>/// BRAND IDENTITY</span>
+                </div>
+            </div>
+
+            <!-- Hero Section -->
+            <section class="p-5 relative">
+                <!-- Decorative Badge -->
+                <div class="absolute top-8 right-6 z-10 bg-[#0052FF] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rotate-6 border border-[#00FF66] shadow-sharp">
+                    VERIFIED CREATIVE ⚡
+                </div>
+
+                <!-- Headline -->
+                <div class="mb-4">
+                    <span class="text-xs text-[#00FF66] uppercase tracking-widest font-semibold">// SENIMAN GRAFIS & DESAINER</span>
+                    <h1 class="font-display text-4xl font-extrabold tracking-tight leading-none text-white mt-1">
+                        NEON <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] to-[#0052FF]">GRIT</span><br/>
+                        STUDIO.
+                    </h1>
+                </div>
+
+                <!-- Profile Photo Container (Streetwear Style with Dummy Image) -->
+                <div class="relative my-6 group">
+                    <!-- Photo Frame Border -->
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-[#00FF66] to-[#0052FF] rounded-none opacity-80 blur-sm group-hover:opacity-100 transition duration-300"></div>
+                    
+                    <div class="relative bg-[#060B1E] border-2 border-[#00FF66] p-2 overflow-hidden">
+                        <!-- Dummy Profile Image (Stylized) -->
+                        <img 
+                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800" 
+                            alt="Desainer Grafis Profile Dummy" 
+                            class="w-full h-72 object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-500 filter brightness-90"
+                            onerror="this.src='https://placehold.co/600x700/0A1128/00FF66?text=STREETWEAR+DESIGNER'"
+                        />
+                        
+                        <!-- Overlay Stickers & Tape -->
+                        <div class="absolute top-4 left-4 tape-accent px-3 py-1 font-display text-xs font-black shadow-lg">
+                            DESIGNER #082
+                        </div>
+
+                        <div class="absolute bottom-4 right-4 bg-[#060B1E]/90 border border-[#00FF66] text-[#00FF66] px-3 py-1.5 text-xs font-mono backdrop-blur-sm flex items-center gap-1.5">
+                            <i data-lucide="zap" class="w-3.5 h-3.5 text-[#00FF66] fill-[#00FF66]"></i>
+                            <span>AVAILABLE FOR FREELANCE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Short Bio -->
+                <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                    Spesialis desainer grafis dengan estetika <span class="text-[#00FF66] font-bold">street culture, cyber aesthetic, dan streetwear apparel design</span>. Mengubah ide liar menjadi karya visual berkarakter kuat dan berani.
+                </p>
+
+                <!-- DOWNLOAD PORTFOLIO CTA BUTTON -->
+                <div class="space-y-3">
+                    <button id="downloadBtn" onclick="triggerPortfolioDownload()" class="w-full bg-[#00FF66] text-[#060B1E] font-display text-base font-extrabold py-3.5 px-4 flex items-center justify-center gap-3 border-2 border-[#00FF66] shadow-sharp hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all active:scale-[0.99] group">
+                        <i data-lucide="download" class="w-5 h-5 group-hover:bounce"></i>
+                        <span>DOWNLOAD PORTFOLIO (.PDF)</span>
+                    </button>
+                    <p class="text-[11px] text-center text-gray-400">PDF Interactive • Updated Oct 2026 • 24MB</p>
+                </div>
+            </section>
+
+            <!-- Interactive Gallery / Works Tabs Section -->
+            <section class="p-5 border-t border-[#0052FF]/30 bg-[#060B1E]/60">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="font-display text-xl font-bold text-white flex items-center gap-2">
+                        <span class="text-[#00FF66]">//</span> KARYA PILIHAN
+                    </h2>
+                    <span class="text-xs text-[#0052FF] font-bold">2024 - 2026</span>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="flex gap-2 overflow-x-auto pb-2 mb-4 scrollbar-none text-xs">
+                    <button onclick="filterGallery('all', this)" class="tab-btn bg-[#00FF66] text-[#060B1E] font-bold px-3 py-1.5 whitespace-nowrap">SEMUA</button>
+                    <button onclick="filterGallery('apparel', this)" class="tab-btn bg-[#0A1128] text-gray-300 border border-[#0052FF]/50 hover:border-[#00FF66] px-3 py-1.5 whitespace-nowrap">STREETWEAR</button>
+                    <button onclick="filterGallery('poster', this)" class="tab-btn bg-[#0A1128] text-gray-300 border border-[#0052FF]/50 hover:border-[#00FF66] px-3 py-1.5 whitespace-nowrap">POSTER ART</button>
+                    <button onclick="filterGallery('brand', this)" class="tab-btn bg-[#0A1128] text-gray-300 border border-[#0052FF]/50 hover:border-[#00FF66] px-3 py-1.5 whitespace-nowrap">BRANDING</button>
+                </div>
+
+                <!-- Work Items Grid -->
+                <div class="grid grid-cols-2 gap-3" id="galleryGrid">
+                    <!-- Item 1 -->
+                    <div class="gallery-item apparel border border-[#0052FF]/40 bg-[#0A1128] p-2 relative group cursor-pointer overflow-hidden" onclick="previewImage('Cyberpunk Hooded Apparel Concept', 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&q=80&w=600')">
+                        <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&q=80&w=600" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300" alt="Streetwear Apparel Work" onerror="this.src='https://placehold.co/400x500/0A1128/00FF66?text=APPAREL+DESIGN'"/>
+                        <div class="mt-2">
+                            <span class="text-[10px] text-[#00FF66] block font-semibold">APPAREL DESIGN</span>
+                            <h3 class="font-bold text-xs truncate text-white">NEON REBEL HOODIE</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="gallery-item poster border border-[#0052FF]/40 bg-[#0A1128] p-2 relative group cursor-pointer overflow-hidden" onclick="previewImage('Acid Typography Event Poster', 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=600')">
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=600" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300" alt="Poster Design" onerror="this.src='https://placehold.co/400x500/0A1128/0052FF?text=POSTER+ART'"/>
+                        <div class="mt-2">
+                            <span class="text-[10px] text-[#0052FF] block font-semibold">POSTER ART</span>
+                            <h3 class="font-bold text-xs truncate text-white">ACID FREQUENCY 2025</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="gallery-item brand border border-[#0052FF]/40 bg-[#0A1128] p-2 relative group cursor-pointer overflow-hidden" onclick="previewImage('Tokyo Underground Record Identity', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600')">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300" alt="Brand Identity" onerror="this.src='https://placehold.co/400x500/0A1128/00FF66?text=BRANDING'"/>
+                        <div class="mt-2">
+                            <span class="text-[10px] text-[#00FF66] block font-semibold">BRAND IDENTITY</span>
+                            <h3 class="font-bold text-xs truncate text-white">SUB-ZERO RECORDS</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="gallery-item apparel border border-[#0052FF]/40 bg-[#0A1128] p-2 relative group cursor-pointer overflow-hidden" onclick="previewImage('Oversized Graphic Tee Art', 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&q=80&w=600')">
+                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&q=80&w=600" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300" alt="Streetwear Tee Design" onerror="this.src='https://placehold.co/400x500/0A1128/0052FF?text=GRAPHIC+TEE'"/>
+                        <div class="mt-2">
+                            <span class="text-[10px] text-[#0052FF] block font-semibold">STREETWEAR</span>
+                            <h3 class="font-bold text-xs truncate text-white">OVERSIZED GRAPHIC TEE</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- High-Impact CTA Banner -->
+            <section class="p-5 my-2">
+                <div class="bg-gradient-to-br from-[#0052FF] to-[#0A1128] p-6 border-2 border-[#00FF66] shadow-sharp relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 text-white/5 font-display text-8xl font-black select-none pointer-events-none">
+                        RAW
+                    </div>
+                    <span class="bg-[#00FF66] text-[#060B1E] text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider inline-block mb-2">
+                        LET'S COLLABORATE
+                    </span>
+                    <h2 class="font-display text-2xl font-black text-white leading-tight mb-3">
+                        PUNYA PROYEK LOGO ATAU CLOTHING LINE?
+                    </h2>
+                    <p class="text-xs text-gray-200 mb-5">
+                        Mari ciptakan desain grafis berkarakter kuat yang membedakan brand kamu dari kompetitor.
+                    </p>
+                    <button onclick="openModal('contactModal')" class="w-full bg-[#00FF66] text-[#060B1E] font-display text-sm font-black py-3 uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-white transition-all shadow-lg">
+                        <i data-lucide="message-square" class="w-4 h-4"></i>
+                        <span>DISKUSIKAN PROYEK SEKARANG</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Social Media Links Section -->
+            <section class="p-5 border-t border-[#0052FF]/30">
+                <div class="text-center mb-4">
+                    <span class="text-xs text-[#00FF66] font-bold tracking-widest">// CONNECT WITH ME</span>
+                    <h3 class="font-display text-lg font-bold text-white">SOSIAL MEDIA & NETWORK</h3>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2.5">
+                    <!-- Instagram -->
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="bg-[#0A1128] border border-[#0052FF]/40 hover:border-[#00FF66] p-3 flex items-center gap-3 group transition-all">
+                        <div class="p-2 bg-[#0052FF]/20 text-[#00FF66] group-hover:bg-[#00FF66] group-hover:text-[#060B1E] transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-white group-hover:text-[#00FF66]">INSTAGRAM</span>
+                            <span class="text-[10px] text-gray-400">@raw_gartist</span>
+                        </div>
+                    </a>
+
+                    <!-- Behance -->
+                    <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="bg-[#0A1128] border border-[#0052FF]/40 hover:border-[#00FF66] p-3 flex items-center gap-3 group transition-all">
+                        <div class="p-2 bg-[#0052FF]/20 text-[#00FF66] group-hover:bg-[#00FF66] group-hover:text-[#060B1E] transition-colors">
+                            <i data-lucide="layers" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-white group-hover:text-[#00FF66]">BEHANCE</span>
+                            <span class="text-[10px] text-gray-400">/streetgartist</span>
+                        </div>
+                    </a>
+
+                    <!-- Dribbble -->
+                    <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" class="bg-[#0A1128] border border-[#0052FF]/40 hover:border-[#00FF66] p-3 flex items-center gap-3 group transition-all">
+                        <div class="p-2 bg-[#0052FF]/20 text-[#00FF66] group-hover:bg-[#00FF66] group-hover:text-[#060B1E] transition-colors">
+                            <i data-lucide="dribbble" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-white group-hover:text-[#00FF66]">DRIBBBLE</span>
+                            <span class="text-[10px] text-gray-400">gartist_folio</span>
+                        </div>
+                    </a>
+
+                    <!-- TikTok -->
+                    <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="bg-[#0A1128] border border-[#0052FF]/40 hover:border-[#00FF66] p-3 flex items-center gap-3 group transition-all">
+                        <div class="p-2 bg-[#0052FF]/20 text-[#00FF66] group-hover:bg-[#00FF66] group-hover:text-[#060B1E] transition-colors">
+                            <i data-lucide="video" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-white group-hover:text-[#00FF66]">TIKTOK</span>
+                            <span class="text-[10px] text-gray-400">@process_design</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-[#060B1E] border-t border-[#0052FF]/40 p-4 text-center">
+            <div class="flex justify-center items-center gap-2 mb-2">
+                <span class="text-xs text-gray-400">DESIGNED BY</span>
+                <span class="text-xs font-bold text-[#00FF66] tracking-wider">YOUR NAME</span>
+            </div>
+            <p class="text-[10px] text-gray-500 font-mono">
+                © 2026 RAWLABS GRAPHICS. ALL RIGHTS RESERVED.
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- MODAL 1: Contact / Quick Message Drawer -->
+    <div id="contactModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-[#0A1128] border-2 border-[#00FF66] w-full max-w-sm p-5 relative shadow-neon-green">
+            <button onclick="closeModal('contactModal')" class="absolute top-3 right-3 text-gray-400 hover:text-[#00FF66]">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="mb-4">
+                <span class="text-xs text-[#00FF66] font-bold">// QUICK INQUIRY</span>
+                <h3 class="font-display text-xl font-extrabold text-white">HUBUNGI DESAINER</h3>
+            </div>
+
+            <form onsubmit="handleFormSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 mb-1">NAMA / BRAND</label>
+                    <input type="text" required placeholder="Masukkan nama kamu" class="w-full bg-[#060B1E] border border-[#0052FF] focus:border-[#00FF66] p-2.5 text-xs text-white outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 mb-1">EMAIL / WHATSAPP</label>
+                    <input type="text" required placeholder="Kontak aktif" class="w-full bg-[#060B1E] border border-[#0052FF] focus:border-[#00FF66] p-2.5 text-xs text-white outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 mb-1">JENIS DESAIN</label>
+                    <select class="w-full bg-[#060B1E] border border-[#0052FF] focus:border-[#00FF66] p-2.5 text-xs text-white outline-none">
+                        <option>Streetwear Apparel / Merchandise</option>
+                        <option>Poster Art / Event Artwork</option>
+                        <option>Brand Identity / Logo Design</option>
+                        <option>Lainnya</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 mb-1">PESAN / BRIEF RINGKAS</label>
+                    <textarea rows="3" placeholder="Ceritakan ide proyekmu..." class="w-full bg-[#060B1E] border border-[#0052FF] focus:border-[#00FF66] p-2.5 text-xs text-white outline-none"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-[#00FF66] text-[#060B1E] font-display font-black py-3 text-sm hover:bg-white transition-all shadow-sharp">
+                    KIRIM PESAN 🚀
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Image Preview Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4" onclick="closeModal('imageModal')">
+        <div class="bg-[#0A1128] border-2 border-[#00FF66] w-full max-w-sm p-4 relative" onclick="event.stopPropagation()">
+            <button onclick="closeModal('imageModal')" class="absolute top-2 right-2 text-gray-400 hover:text-[#00FF66]">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <img id="previewModalImage" src="" class="w-full h-64 object-cover mb-3 border border-[#0052FF]">
+            <h4 id="previewModalTitle" class="font-display font-bold text-white text-base"></h4>
+            <p class="text-xs text-[#00FF66] mt-1">High Resolution Graphic Asset • Streetwear Culture Concept</p>
+        </div>
+    </div>
+
+    <!-- Toast Notification for Portfolio Download -->
+    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-[#00FF66] text-[#060B1E] px-4 py-3 border-2 border-black font-mono font-bold text-xs flex items-center gap-2 shadow-2xl transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none z-50">
+        <i data-lucide="check-circle" class="w-4 h-4"></i>
+        <span id="toastMessage">Portofolio berhasil di-download!</span>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Sound effect simulator using Web Audio API (No external MP3 files needed)
+        let soundEnabled = false;
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('audioToggleBtn');
+            if (soundEnabled) {
+                btn.innerHTML = `<i data-lucide="volume-2" class="w-4 h-4 text-[#00FF66]"></i>`;
+                playBeep(880, 0.1);
+                showToast("Efek suara diaktifkan 🔊");
+            } else {
+                btn.innerHTML = `<i data-lucide="volume-x" class="w-4 h-4 text-gray-300"></i>`;
+                showToast("Efek suara dimatikan 🔇");
+            }
+            lucide.createIcons();
+        }
+
+        function playBeep(freq = 440, type = 'sine') {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = type;
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.05, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + 0.15);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.15);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+        // Handle Download Portfolio Trigger
+        function triggerPortfolioDownload() {
+            playBeep(600);
+            
+            // Generate dummy PDF text file on the fly for real download feel
+            const dummyPortfolioContent = `=========================================\nRAW LABS // STREETWEAR GRAPHIC DESIGNER\n=========================================\n\nHello! Thank you for downloading my portfolio.\n\nSpecialization:\n- Streetwear Apparel & Graphic Tees\n- Cyberpunk / Acid Poster Artwork\n- Brand Identity & Bold Typography\n\nContact for Inquiry: studio@rawlabs-design.com\nInstagram: @raw_gartist\n\n© 2026 RawLabs Studio. All rights reserved.`;
+            
+            const blob = new Blob([dummyPortfolioContent], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'GRAPHIC_DESIGNER_PORTFOLIO_2026.txt';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showToast("Downloading Portfolio (.PDF/TXT)... ⚡");
+        }
+
+        // Toast Notification System
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.innerText = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Gallery Filter System
+        function filterGallery(category, btnElement) {
+            playBeep(520);
+            
+            // Update Active Tab Styles
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.className = 'tab-btn bg-[#0A1128] text-gray-300 border border-[#0052FF]/50 hover:border-[#00FF66] px-3 py-1.5 whitespace-nowrap';
+            });
+            btnElement.className = 'tab-btn bg-[#00FF66] text-[#060B1E] font-bold px-3 py-1.5 whitespace-nowrap';
+
+            // Filter Grid Items
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Image Preview Modal
+        function previewImage(title, imgSrc) {
+            playBeep(400);
+            document.getElementById('previewModalTitle').innerText = title;
+            document.getElementById('previewModalImage').src = imgSrc;
+            openModal('imageModal');
+        }
+
+        // Modal Handlers
+        function openModal(modalId) {
+            playBeep(650);
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            playBeep(300);
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            playBeep(800);
+            closeModal('contactModal');
+            showToast("Pesan terkirim! Desainer akan menghubungi kamu 🔥");
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
